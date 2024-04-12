@@ -31,7 +31,9 @@ function Fiery() {
                 {
                   name: "Temperature",
                   color: "#FFA500", // change color to orange
-                  data: fetched_data.slice(-100).map((item) => item.field1),
+                  data: fetched_data
+                    .slice(-100)
+                    .map((item) => parseFloat(item.field1).toFixed(1)),
                 },
               ],
               stroke: {
@@ -86,7 +88,9 @@ function Fiery() {
                 {
                   name: "Heat Index",
                   color: "#FF5D87",
-                  data: fetched_data.slice(-100).map((item) => item.field2),
+                  data: fetched_data
+                    .slice(-100)
+                    .map((item) => parseFloat(item.field2).toFixed(1)),
                 },
               ],
               stroke: {
@@ -141,7 +145,9 @@ function Fiery() {
                 {
                   name: "Humidity",
                   color: "#6699ee",
-                  data: fetched_data.slice(-100).map((item) => item.field3),
+                  data: fetched_data
+                    .slice(-100)
+                    .map((item) => parseInt(item.field3)),
                 },
               ],
               stroke: {
@@ -173,9 +179,7 @@ function Fiery() {
               humidity
             ).render();
             document.querySelector("#curHumidity").textContent =
-              parseFloat(fetched_data[fetched_data.length - 1].field3).toFixed(
-                1
-              ) + " %";
+              parseInt(fetched_data[fetched_data.length - 1].field3) + " %";
 
             // =====================================
             // Smoke
@@ -196,7 +200,9 @@ function Fiery() {
                 {
                   name: "Smoke",
                   color: "#29E7CD",
-                  data: fetched_data.slice(-100).map((item) => item.field5),
+                  data: fetched_data
+                    .slice(-100)
+                    .map((item) => parseInt(item.field5)),
                 },
               ],
               stroke: {
@@ -225,9 +231,7 @@ function Fiery() {
             };
             new ApexCharts(document.querySelector("#smoke"), smoke).render();
             document.querySelector("#curSmoke").textContent =
-              parseFloat(fetched_data[fetched_data.length - 1].field5).toFixed(
-                1
-              ) + " PPM";
+              parseInt(fetched_data[fetched_data.length - 1].field5) + " PPM";
 
             // =====================================
             // Alerts
@@ -303,19 +307,27 @@ function Fiery() {
 
                 var smoke_details = document.createElement("span");
                 smoke_details.className = "text-primary d-block fw-normal";
-                smoke_details.textContent = `Temperature: ${fetched_data[i].field1} °C`;
+                smoke_details.textContent = `Temperature: ${parseFloat(
+                  fetched_data[i].field1
+                ).toFixed(1)} °C`;
                 div3.appendChild(smoke_details);
                 var smoke_details = document.createElement("span");
                 smoke_details.className = "text-primary d-block fw-normal";
-                smoke_details.textContent = `Humidity: ${fetched_data[i].field3} %`;
+                smoke_details.textContent = `Humidity: ${parseInt(
+                  fetched_data[i].field3
+                )} %`;
                 div3.appendChild(smoke_details);
                 var smoke_details = document.createElement("span");
                 smoke_details.className = "text-primary d-block fw-normal";
-                smoke_details.textContent = `Heat Index: ${fetched_data[i].field2} °C`;
+                smoke_details.textContent = `Heat Index: ${parseFloat(
+                  fetched_data[i].field2
+                ).toFixed(1)} °C`;
                 div3.appendChild(smoke_details);
                 var smoke_details = document.createElement("span");
                 smoke_details.className = "text-primary d-block fw-normal";
-                smoke_details.textContent = `Smoke: ${fetched_data[i].field5} PPM`;
+                smoke_details.textContent = `Smoke: ${parseInt(
+                  fetched_data[i].field5
+                )} PPM`;
                 div3.appendChild(smoke_details);
 
                 li.appendChild(div1);
@@ -337,6 +349,7 @@ function Fiery() {
 
               document.getElementById("alertLogo").src =
                 "../assets/images/logos/favicon.png";
+              document.getElementById("alertLogo").alt = "Fire Alert";
             } else {
               document.getElementById("fireAlert").style.backgroundColor =
                 "white";
@@ -346,7 +359,8 @@ function Fiery() {
               document.getElementById("fireAlert").style.color = "black";
 
               document.getElementById("alertLogo").src =
-                "../assets/images/logos/checkmark.png";
+                "../assets/images/checkmark.png";
+              document.getElementById("alertLogo").alt = "Checkmark";
             }
           })
           .catch((error) => {

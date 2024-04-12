@@ -1,81 +1,167 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Modify Thresholds</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="../assets/images/logos/favicon.png"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.min.css" />
+    <link rel="stylesheet" href="../assets/css/our.css" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Modify Thresholds </title>
-  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
-  <link rel="stylesheet" href="../assets/css/styles.min.css" />
-  <link rel="stylesheet" href="../assets/css/our.css" />
-</head>
-
-<body>
-  <!--  Body Wrapper -->
-  <div class="page-wrapper mini-sidebar" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full mini-sidebar"
-    data-sidebar-position="fixed" data-header-position="fixed">
-
-    <!--  Main wrapper -->
-    <div class="body-wrapper" style="margin-left: 0;">
-      <!--  Header Start -->
-      <header class="app-header" , style="width: 100%">
-        <div class="navie" , style="width: 100%; justify-content: right; padding: 0">
-          <nav class="navbar navbar-expand-lg navbar-light">
-            <div
-              class="navbar-collapse justify-content-end px-0"
-              id="navbarNav"
-            >
-              <ul
-                class="navbar-nav flex-row ms-auto align-items-center justify-content-end"
+  <body>
+    <!--  Body Wrapper -->
+    <div
+      class="page-wrapper mini-sidebar"
+      id="main-wrapper"
+      data-layout="vertical"
+      data-navbarbg="skin6"
+      data-sidebartype="full mini-sidebar"
+      data-sidebar-position="fixed"
+      data-header-position="fixed"
+    >
+      <!--  Main wrapper -->
+      <div class="body-wrapper" style="margin-left: 0">
+        <!--  Header Start -->
+        <header class="app-header" , style="width: 100%">
+          <div
+            class="navie"
+            ,
+            style="width: 100%; justify-content: right; padding: 0"
+          >
+            <nav class="navbar navbar-expand-lg navbar-light">
+              <div
+                class="navbar-collapse justify-content-end px-0"
+                id="navbarNav"
               >
-                <a href="index.html" class="btn btn-primary" style="background-color: rgb(224, 126, 53); border-color: rgb(224, 126, 53);">
-                  Go Back
-                </a>
-              </ul>
-            </div>
-          </nav>
-        </div>
-      </header>
-      <!--  Header End -->
-      <div class="container-fluid">
+                <ul
+                  class="navbar-nav flex-row ms-auto align-items-center justify-content-end"
+                >
+                  <a
+                    href="index.html"
+                    class="btn btn-primary"
+                    style="
+                      background-color: rgb(224, 126, 53);
+                      border-color: rgb(224, 126, 53);
+                    "
+                  >
+                    Go Back
+                  </a>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </header>
+        <!--  Header End -->
         <div class="container-fluid">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title fw-semibold mb-4">Modify Thresholds</h5>
-              <div class="card">
-                <div class="card-body">
-                  <form>
-                    <!-- TODO: add the default values -->
-                    <div class="mb-3">
-                      <label for="temperature" class="form-label">Temperature Threshold</label>
-                      <input type="number" class="form-control" id="temperature" aria-describedby="temperatureHelp" placeholder="00">
-                      <div id="temperatureHelp" class="form-text">Default value: 00</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="humidity" class="form-label">Humidity Change Threshold</label>
-                      <input type="number" class="form-control" id="humidity" aria-describedby="humidityHelp" placeholder="00">
-                      <div id="humidityHelp" class="form-text">Default value: 00</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="heatIndex" class="form-label">Heat Index Threshold</label>
-                      <input type="number" class="form-control" id="heatIndex" aria-describedby="heatIndexHelp" placeholder="00">
-                      <div id="heatIndexHelp" class="form-text">Default value: 00</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="smoke" class="form-label">Smoke Threshold</label>
-                      <input type="number" class="form-control" id="smoke" aria-describedby="smokeHelp" placeholder="00">
-                      <div id="smokeHelp" class="form-text">Default value: 00</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="password" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="password">
-                    </div>
-                    <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="accepted">
-                      <label class="form-check-label" for="accepted">I take full responsibility for the modifications I am about to perform. I recognise the fact that any damage caused due to these changes will be my responsibility henceforth.</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="submit" style="background-color: rgb(192, 40, 49); border-color: rgb(192, 40, 49);">Submit</button>
-                  </form>
+          <div class="container-fluid">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title fw-semibold mb-4">Modify Thresholds</h5>
+                <div class="card">
+                  <div class="card-body">
+                    <form>
+                      <!-- TODO: add the default values -->
+                      <div class="mb-3">
+                        <label for="temperature" class="form-label"
+                          >Temperature Threshold</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="temperature"
+                          aria-describedby="temperatureHelp"
+                          placeholder="00"
+                        />
+                        <div id="temperatureHelp" class="form-text">
+                          Default value: 00
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="humidity" class="form-label"
+                          >Humidity Change Threshold</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="humidity"
+                          aria-describedby="humidityHelp"
+                          placeholder="00"
+                        />
+                        <div id="humidityHelp" class="form-text">
+                          Default value: 00
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="heatIndex" class="form-label"
+                          >Heat Index Threshold</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="heatIndex"
+                          aria-describedby="heatIndexHelp"
+                          placeholder="00"
+                        />
+                        <div id="heatIndexHelp" class="form-text">
+                          Default value: 00
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="smoke" class="form-label"
+                          >Smoke Threshold</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="smoke"
+                          aria-describedby="smokeHelp"
+                          placeholder="00"
+                        />
+                        <div id="smokeHelp" class="form-text">
+                          Default value: 00
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="password" class="form-label"
+                          >Password</label
+                        >
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="password"
+                        />
+                      </div>
+                      <div class="mb-3 form-check">
+                        <input
+                          type="checkbox"
+                          class="form-check-input"
+                          id="accepted"
+                        />
+                        <label class="form-check-label" for="accepted"
+                          >I take full responsibility for the modifications I am
+                          about to perform. I recognise the fact that any damage
+                          caused due to these changes will be my responsibility
+                          henceforth.</label
+                        >
+                      </div>
+                      <button
+                        type="submit"
+                        class="btn btn-primary"
+                        id="submit"
+                        style="
+                          background-color: rgb(192, 40, 49);
+                          border-color: rgb(192, 40, 49);
+                        "
+                      >
+                        Submit
+                      </button>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -83,13 +169,11 @@
         </div>
       </div>
     </div>
-  </div>
-  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/js/sidebarmenu.js"></script>
-  <script src="../assets/js/app.min.js"></script>
-  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
-  <script src="../assets/js/modify.js"></script>
-</body>
-
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/sidebarmenu.js"></script>
+    <script src="../assets/js/app.min.js"></script>
+    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+    <script src="../assets/js/modify.js"></script>
+  </body>
 </html>

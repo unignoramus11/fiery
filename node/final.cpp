@@ -163,11 +163,11 @@ void setup()
 
 int previousHumidityReading = -1;
 
-// Initialize the default threshold values
+// Initialize the threshold values
 float temperatureThreshold = 50;
 float heatIndexThreshold = 55;
-int humidityChangeThreshold = 10;
-int smokeAnalogThreshold = 950;
+int humidityChangeThreshold = 20;
+int smokeAnalogThreshold = 1000;
 
 void loop()
 {
