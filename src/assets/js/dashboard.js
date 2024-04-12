@@ -357,4 +357,4 @@ function Fiery() {
 }
 
 Fiery();
-setInterval(Fiery, 15000);
+setInterval(Fiery, 30000);
