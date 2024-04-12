@@ -301,7 +301,7 @@ function Fiery() {
             }
 
             // Check for fire, to raise alert on the webPage
-            if (fetched_data[fetched_data.length - 1]["field6"]) {
+            if (fetched_data[fetched_data.length - 1]["field6"] === "1") {
               document.getElementById("fireAlert").style.backgroundColor = "rgb(168, 34, 50)";
               document.getElementById("fireAlert").style.borderRadius = "13px";
               
