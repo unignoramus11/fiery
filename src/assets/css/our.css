@@ -28,3 +28,14 @@
     font-weight: 900;
     color: orangered;
 }
+
+#alertText {
+    height: 100%;
+    color: black;
+    
+    margin: 0;
+    margin-left: 11px;
+
+    font-size: 3rem;
+    font-weight: 690;
+}
