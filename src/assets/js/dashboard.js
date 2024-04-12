@@ -232,6 +232,30 @@ function Fiery() {
             // =====================================
             // Alerts
             // =====================================
+            var alertList = document.getElementById("alertList");
+            alertList.innerHTML = `<li
+                      class="timeline-item d-flex position-relative overflow-hidden"
+                      id="lastAlert"
+                    >
+                      <div
+                        class="timeline-time text-dark flex-shrink-0 text-end"
+                        id="startup"
+                      >
+                        <div>2024-04-09</div>
+                        <div style="padding-bottom: 5vh">22:08:05 UTC</div>
+                      </div>
+                      <div
+                        class="timeline-badge-wrap d-flex flex-column align-items-center"
+                      >
+                        <span
+                          class="timeline-badge border-2 border border-success flex-shrink-0 my-8"
+                        ></span>
+                      </div>
+                      <div class="timeline-desc fs-3 text-dark mt-n1">
+                        Node started
+                      </div>
+                    </li>`;
+
             document.getElementById("startup").innerHTML = `<div>${
               fetched_data[0].created_at.split("T")[0]
             }</div>
@@ -247,7 +271,8 @@ function Fiery() {
                   "timeline-item d-flex position-relative overflow-hidden";
 
                 var div1 = document.createElement("div");
-                div1.className = "timeline-time text-dark flex-shrink-0 text-end";
+                div1.className =
+                  "timeline-time text-dark flex-shrink-0 text-end";
                 var date = document.createElement("div");
                 date.textContent = fetched_data[i].created_at.split("T")[0];
                 div1.appendChild(date);
@@ -272,7 +297,8 @@ function Fiery() {
                 div2.appendChild(span2);
 
                 var div3 = document.createElement("div");
-                div3.className = "timeline-desc fs-3 text-dark mt-n1 fw-semibold";
+                div3.className =
+                  "timeline-desc fs-3 text-dark mt-n1 fw-semibold";
                 div3.textContent = "Fire Detected! ";
 
                 var smoke_details = document.createElement("span");
@@ -302,22 +328,25 @@ function Fiery() {
 
             // Check for fire, to raise alert on the webPage
             if (fetched_data[fetched_data.length - 1]["field6"] === "1") {
-              document.getElementById("fireAlert").style.backgroundColor = "rgb(168, 34, 50)";
+              document.getElementById("fireAlert").style.backgroundColor =
+                "rgb(168, 34, 50)";
               document.getElementById("fireAlert").style.borderRadius = "13px";
-              
+
               document.getElementById("alertText").innerHTML = "Fire Detected!";
               document.getElementById("alertText").style.color = "white";
 
-              document.getElementById("alertLogo").src = "../assets/images/logos/favicon.png";
-            }
-            else {
-              document.getElementById("fireAlert").style.backgroundColor = "white";
+              document.getElementById("alertLogo").src =
+                "../assets/images/logos/favicon.png";
+            } else {
+              document.getElementById("fireAlert").style.backgroundColor =
+                "white";
               document.getElementById("fireAlert").style.borderRadius = "13px";
-              
+
               document.getElementById("alertText").innerHTML = "All Good!";
               document.getElementById("fireAlert").style.color = "black";
 
-              document.getElementById("alertLogo").src = "../assets/images/logos/checkmark.png";
+              document.getElementById("alertLogo").src =
+                "../assets/images/logos/checkmark.png";
             }
           })
           .catch((error) => {
