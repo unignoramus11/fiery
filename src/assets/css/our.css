@@ -18,14 +18,6 @@
     padding: 0 30px;
 }
 
-.toggle-container {
-    margin: 0 10%;
-}
-
-.modify {
-    padding: 0 35%;
-}
-
 .logoName {
     height: 100%;
     width: 100px;
@@ -39,72 +31,10 @@
 
 #alertText {
     color: black;
-
+    
     margin: 0;
     margin-left: 11px;
 
     font-size: calc(min(3rem, 11vw));
     font-weight: 690;
-}
-
-/* Dark mode */
-
-.toggle-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.toggle-input {
-    display: none;
-}
-
-.toggle-label {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    background-color: #ccc;
-    border-radius: 34px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.toggle-label::before {
-    content: "";
-    position: absolute;
-    transition: transform 0.3s;
-}
-
-.toggle-input:checked+.toggle-label {
-    background-color: #2196F3;
-}
-
-.toggle-input:checked+.toggle-label::before {
-    transform: translateX(26px);
-}
-
-.toggle-icon {
-    position: absolute;
-    top: 10%;
-    left: 14%;
-    width: 20px;
-    height: 24px;
-    font-size: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s;
-}
-
-.toggle-icon::after {
-    content: "☀️";
-}
-
-.toggle-input:checked+.toggle-label .toggle-icon {
-    transform: translateX(26px) rotate(360deg);
-}
-
-.toggle-input:checked+.toggle-label .toggle-icon::after {
-    content: "🌙";
 }
