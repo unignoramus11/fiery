@@ -6,6 +6,7 @@ submitBtn.addEventListener("click", function (event) {
   var humidity = Number(document.getElementById("humidity").value);
   var heatIndex = Number(document.getElementById("heatIndex").value);
   var smoke = Number(document.getElementById("smoke").value);
+  var flame = Number(document.getElementById("flame").value);
   var password = document.getElementById("password").value;
   var accepted = document.getElementById("accepted").checked;
 
@@ -17,12 +18,14 @@ submitBtn.addEventListener("click", function (event) {
     alert("Invalid heat index threshold");
   else if (isNaN(smoke) || smoke === 0)
     alert("Invalid smoke threshold (must be a positive number)");
+  else if (isNaN(flame) || flame === 0)
+    alert("Invalid flame threshold (must be a positive number)");
   else if (!accepted)
     alert("Please accept the terms and conditions");
   else {
     //   start an async GET request to push this data to thingspeak server
     fetch(
-      `https://api.thingspeak.com/update?api_key=DMUU4N34U556W1W1&field1=${temperature}&field2=${heatIndex}&field3=${humidity}&field4=${smoke}&field5=${password}`
+      `https://api.thingspeak.com/update?api_key=DMUU4N34U556W1W1&field1=${temperature}&field2=${heatIndex}&field3=${humidity}&field4=${smoke}&field5=${password}&field5=${flame}`
     )
       .then((response) => response.json())
       .then((data) => {
