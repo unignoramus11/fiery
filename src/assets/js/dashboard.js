@@ -234,6 +234,58 @@ function Fiery() {
               parseInt(fetched_data[fetched_data.length - 1].field5) + " PPM";
 
             // =====================================
+            // Flame Sensor
+            // =====================================
+            var flame = {
+              chart: {
+                id: "sparkline1",
+                type: "area",
+                height: 60,
+                sparkline: {
+                  enabled: true,
+                },
+                group: "sparklines",
+                fontFamily: "Plus Jakarta Sans', sans-serif",
+                foreColor: "#adb0bb",
+              },
+              series: [
+                {
+                  name: "Flames",
+                  color: "#29E7CD",
+                  data: fetched_data
+                    .slice(-100)
+                    .map((item) => parseInt(item.field7)),
+                },
+              ],
+              stroke: {
+                curve: "smooth",
+                width: 2,
+              },
+              fill: {
+                colors: ["#ffeff6"],
+                type: "solid",
+                opacity: 0.05,
+              },
+
+              markers: {
+                size: 0,
+              },
+              tooltip: {
+                theme: "dark",
+                fixed: {
+                  enabled: true,
+                  position: "right",
+                },
+                x: {
+                  show: false,
+                },
+              },
+            };
+            new ApexCharts(document.querySelector("#flames"), flame).render();
+            document.querySelector("#curFlame").textContent =
+              parseInt(fetched_data[fetched_data.length - 1].field7) + " V";
+
+            // =====================================
             // Alerts
             // =====================================
             var alertList = document.getElementById("alertList");
@@ -260,12 +312,10 @@ function Fiery() {
                       </div>
                     </li>`;
 
-            document.getElementById("startup").innerHTML = `<div>${
-              fetched_data[0].created_at.split("T")[0]
-            }</div>
-        <div style="padding-bottom: 5vh;">${
-          fetched_data[0].created_at.split("T")[1].replace("Z", "") + " UTC"
-        }</div>`;
+            document.getElementById("startup").innerHTML = `<div>${fetched_data[0].created_at.split("T")[0]
+              }</div>
+        <div style="padding-bottom: 5vh;">${fetched_data[0].created_at.split("T")[1].replace("Z", "") + " UTC"
+              }</div>`;
 
             var lastAlert = document.getElementById("lastAlert");
             for (var i = fetched_data.length - 1; i >= 0; i--) {
@@ -273,9 +323,9 @@ function Fiery() {
                 var li = document.createElement("li");
                 li.className =
                   "timeline-item d-flex position-relative overflow-hidden";
-                
+
                 const utcDate = new Date(fetched_data[i].created_at);
-                const istDate = new Date(utcDate.toLocaleString("en-US", {timeZone: "Asia/Kolkata"}));
+                const istDate = new Date(utcDate.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
                 var div1 = document.createElement("div");
                 div1.className =
                   "timeline-time text-dark flex-shrink-0 text-end";
@@ -284,10 +334,10 @@ function Fiery() {
                   day: '2-digit',
                   month: '2-digit',
                   year: 'numeric'
-              }).replace("/", "-").replace("/", "-");
+                }).replace("/", "-").replace("/", "-");
                 div1.appendChild(date);
                 var time = document.createElement("div");
-                time.textContent = istDate.toLocaleTimeString("en-US", {hour12: false}) + " IST";
+                time.textContent = istDate.toLocaleTimeString("en-US", { hour12: false }) + " IST";
                 div1.appendChild(time);
 
                 var div2 = document.createElement("div");
