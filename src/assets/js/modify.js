@@ -25,7 +25,7 @@ submitBtn.addEventListener("click", function (event) {
   else {
     //   start an async GET request to push this data to thingspeak server
     fetch(
-      `https://api.thingspeak.com/update?api_key=DMUU4N34U556W1W1&field1=${temperature}&field2=${heatIndex}&field3=${humidity}&field4=${smoke}&field5=${password}&field5=${flame}`
+      `https://api.thingspeak.com/update?api_key=DMUU4N34U556W1W1&field1=${temperature}&field2=${heatIndex}&field3=${humidity}&field4=${smoke}&field5=${password}&field6=${flame}`
     )
       .then((response) => response.json())
       .then((data) => {

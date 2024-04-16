@@ -359,30 +359,36 @@ function Fiery() {
                   "timeline-desc fs-3 text-dark mt-n1 fw-semibold";
                 div3.textContent = "Fire Detected! ";
 
-                var smoke_details = document.createElement("span");
-                smoke_details.className = "text-primary d-block fw-normal";
-                smoke_details.textContent = `Temperature: ${parseFloat(
+                var temp_details = document.createElement("span");
+                temp_details.className = "text-primary d-block fw-normal";
+                temp_details.textContent = `Temperature: ${parseFloat(
                   fetched_data[i].field1
                 ).toFixed(1)} °C`;
-                div3.appendChild(smoke_details);
-                var smoke_details = document.createElement("span");
-                smoke_details.className = "text-primary d-block fw-normal";
-                smoke_details.textContent = `Humidity: ${parseInt(
+                div3.appendChild(temp_details);
+                var humidity_details = document.createElement("span");
+                humidity_details.className = "text-primary d-block fw-normal";
+                humidity_details.textContent = `Humidity: ${parseInt(
                   fetched_data[i].field3
                 )} %`;
-                div3.appendChild(smoke_details);
-                var smoke_details = document.createElement("span");
-                smoke_details.className = "text-primary d-block fw-normal";
-                smoke_details.textContent = `Heat Index: ${parseFloat(
+                div3.appendChild(humidity_details);
+                var heatI_details = document.createElement("span");
+                heatI_details.className = "text-primary d-block fw-normal";
+                heatI_details.textContent = `Heat Index: ${parseFloat(
                   fetched_data[i].field2
                 ).toFixed(1)} °C`;
-                div3.appendChild(smoke_details);
+                div3.appendChild(heatI_details);
                 var smoke_details = document.createElement("span");
                 smoke_details.className = "text-primary d-block fw-normal";
                 smoke_details.textContent = `Smoke: ${parseInt(
                   fetched_data[i].field5
                 )} PPM`;
                 div3.appendChild(smoke_details);
+                var flame_details = document.createElement("span");
+                flame_details.className = "text-primary d-block fw-normal";
+                flame_details.textContent = `Flame: ${parseInt(
+                  fetched_data[i].field7
+                )}`;
+                div3.appendChild(flame_details);
 
                 li.appendChild(div1);
                 li.appendChild(div2);
