@@ -173,11 +173,11 @@ void loop()
 {
     connectToNetwork();
 
-    float h = dht.readHumidity();
-    float t = dht.readTemperature();
-    float f = dht.readTemperature(true);
+    float humidityReading = dht.readHumidity();
+    float temperatureReadingCelsius = dht.readTemperature();
+    float temperatureReadingFahrenheit = dht.readTemperature(true);
 
-    if (isnan(h) || isnan(t) || isnan(f))
+    if (isnan(humidityReading) || isnan(temperatureReadingCelsius) || isnan(temperatureReadingFahrenheit))
     {
         Serial.println("Failed to read from DHT sensor!");
         error();
@@ -185,67 +185,89 @@ void loop()
     else
     {
 
-        float hif = dht.computeHeatIndex(f, h);
-        float hic = dht.computeHeatIndex(t, h, false);
+        float heatIndexFahrenheit = dht.computeHeatIndex(temperatureReadingFahrenheit, humidityReading);
+        float heatIndexCelsius = dht.computeHeatIndex(temperatureReadingCelsius, humidityReading, false);
 
         Serial.print("Humidity: ");
-        Serial.print(h);
+        Serial.print(humidityReading);
         Serial.print(" %\t");
         Serial.print("Temperature: ");
-        Serial.print(t);
+        Serial.print(temperatureReadingCelsius);
         Serial.print(" *C ");
-        Serial.print(f);
+        Serial.print(temperatureReadingFahrenheit);
         Serial.print(" *F\t");
         Serial.print("Heat index: ");
-        Serial.print(hic);
+        Serial.print(heatIndexCelsius);
         Serial.print(" *C ");
-        Serial.print(hif);
+        Serial.print(heatIndexFahrenheit);
         Serial.println(" *F");
 
-        int smokeDigital = digitalRead(SMOKE_SEN_DIGITAL_PIN);
-        int smokeAnalog = analogRead(SMOKE_SEN_ANALOG_PIN);
+        int smokeDigitalReading = digitalRead(SMOKE_SEN_DIGITAL_PIN);
+        int smokeAnalogReading = analogRead(SMOKE_SEN_ANALOG_PIN);
 
         Serial.print("Smoke Digital: ");
-        Serial.print(smokeDigital);
+        Serial.print(smokeDigitalReading);
         Serial.print("\t");
         Serial.print("Smoke Analog: ");
-        Serial.println(smokeAnalog);
+        Serial.println(smokeAnalogReading);
 
         // fetch the thresholds from thingspeak server
-        int numDataPoints = ThingSpeak.readMultipleFields(thresholdChannelNumber, thresholdReadAPIKey);
-        if (numDataPoints > 0)
+        int status_code = ThingSpeak.readMultipleFields(thresholdChannelNumber, thresholdReadAPIKey);
+        if (status_code == 200)
         {
             std::string result = ThingSpeak.readStringField(thresholdChannelNumber, 5, thresholdReadAPIKey).c_str();
             std::string expected = THRESHOLD_PASS;
 
             if (result == expected)
             {
-                temperatureThreshold = ThingSpeak.readStringField(thresholdChannelNumber, 1, thresholdReadAPIKey).toFloat();
-                heatIndexThreshold = ThingSpeak.readStringField(thresholdChannelNumber, 2, thresholdReadAPIKey).toFloat();
-                humidityChangeThreshold = ThingSpeak.readStringField(thresholdChannelNumber, 3, thresholdReadAPIKey).toInt();
-                smokeAnalogThreshold = ThingSpeak.readStringField(thresholdChannelNumber, 4, thresholdReadAPIKey).toInt();
+                float tempTemperatureThreshold = ThingSpeak.readStringField(thresholdChannelNumber, 1, thresholdReadAPIKey).toFloat();
+                float tempHeatIndexThreshold = ThingSpeak.readStringField(thresholdChannelNumber, 2, thresholdReadAPIKey).toFloat();
+                int tempHumidityChangeThreshold = ThingSpeak.readStringField(thresholdChannelNumber, 3, thresholdReadAPIKey).toInt();
+                int tempSmokeAnalogThreshold = ThingSpeak.readStringField(thresholdChannelNumber, 4, thresholdReadAPIKey).toInt();
+                if (!tempTemperatureThreshold || !tempHeatIndexThreshold || !tempHumidityChangeThreshold || !tempSmokeAnalogThreshold)
+                    Serial.println("Invalid threshold value(s) fetched, skipping update.");
+                else
+                {
+                    temperatureThreshold = tempTemperatureThreshold;
+                    heatIndexThreshold = tempHeatIndexThreshold;
+                    humidityChangeThreshold = tempHumidityChangeThreshold;
+                    smokeAnalogThreshold = tempSmokeAnalogThreshold;
+                    Serial.println();
+                    Serial.print("Temperature threshold: ");
+                    Serial.println(temperatureThreshold);
+                    Serial.print("Heat Index threshold: ");
+                    Serial.println(heatIndexThreshold);
+                    Serial.print("Humidity threshold: ");
+                    Serial.println(humidityChangeThreshold);
+                    Serial.print("Smoke threshold: ");
+                    Serial.println(smokeAnalogThreshold);
+                    Serial.println();
+                }
             }
             else
-                Serial.println("Invalid threshold password");
+            {
+                Serial.print("Invalid threshold password, ");
+                Serial.println(result.c_str());
+            }
         }
         else
         {
-            Serial.print(numDataPoints);
+            Serial.print(status_code);
             Serial.print("\t");
             Serial.println("Error reading ThingSpeak channel");
         }
 
-        ThingSpeak.setField(1, t);
-        ThingSpeak.setField(2, hic);
-        ThingSpeak.setField(3, h);
-        ThingSpeak.setField(4, smokeDigital);
-        ThingSpeak.setField(5, smokeAnalog);
+        ThingSpeak.setField(1, temperatureReadingCelsius);
+        ThingSpeak.setField(2, heatIndexCelsius);
+        ThingSpeak.setField(3, humidityReading);
+        ThingSpeak.setField(4, smokeDigitalReading);
+        ThingSpeak.setField(5, smokeAnalogReading);
 
-        if (t > temperatureThreshold ||
-            hic > heatIndexThreshold ||
+        if (temperatureReadingCelsius > temperatureThreshold ||
+            heatIndexCelsius > heatIndexThreshold ||
             (previousHumidityReading != -1 &&
-             abs(previousHumidityReading - h) > humidityChangeThreshold) ||
-            smokeAnalog > smokeAnalogThreshold)
+             abs(previousHumidityReading - humidityReading) > humidityChangeThreshold) ||
+            smokeAnalogReading > smokeAnalogThreshold)
         {
             digitalWrite(BUZZER_PIN, LOW);
             ThingSpeak.setField(6, 1);
@@ -256,7 +278,7 @@ void loop()
             ThingSpeak.setField(6, 0);
         }
 
-        previousHumidityReading = h;
+        previousHumidityReading = humidityReading;
 
         int code = ThingSpeak.writeFields(dataChannelNumber, dataWriteAPIKey);
         if (code == 200)
