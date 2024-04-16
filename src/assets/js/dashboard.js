@@ -234,7 +234,7 @@ function Fiery() {
               parseInt(fetched_data[fetched_data.length - 1].field5) + " PPM";
 
             // =====================================
-            // Flame Sensor
+            // Infrared (Flame) Sensor
             // =====================================
             var flame = {
               chart: {
@@ -254,7 +254,9 @@ function Fiery() {
                   color: "#ff0000",
                   data: fetched_data
                     .slice(-100)
-                    .map((item) => parseInt(item.field7)),
+                    .map((item) =>
+                      (100 - parseInt(item.field7) / 50).toFixed(1)
+                    ),
                 },
               ],
               stroke: {
@@ -283,7 +285,9 @@ function Fiery() {
             };
             new ApexCharts(document.querySelector("#flames"), flame).render();
             document.querySelector("#curFlame").textContent =
-              parseInt(fetched_data[fetched_data.length - 1].field7) + " V";
+              (100 -
+              parseInt(fetched_data[fetched_data.length - 1].field7) / 50).toFixed(1) +
+              " %";
 
             // =====================================
             // Alerts
@@ -312,10 +316,12 @@ function Fiery() {
                       </div>
                     </li>`;
 
-            document.getElementById("startup").innerHTML = `<div>${fetched_data[0].created_at.split("T")[0]
-              }</div>
-        <div style="padding-bottom: 5vh;">${fetched_data[0].created_at.split("T")[1].replace("Z", "") + " UTC"
-              }</div>`;
+            document.getElementById("startup").innerHTML = `<div>${
+              fetched_data[0].created_at.split("T")[0]
+            }</div>
+        <div style="padding-bottom: 5vh;">${
+          fetched_data[0].created_at.split("T")[1].replace("Z", "") + " UTC"
+        }</div>`;
 
             var lastAlert = document.getElementById("lastAlert");
             for (var i = fetched_data.length - 1; i >= 0; i--) {
@@ -325,19 +331,26 @@ function Fiery() {
                   "timeline-item d-flex position-relative overflow-hidden";
 
                 const utcDate = new Date(fetched_data[i].created_at);
-                const istDate = new Date(utcDate.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+                const istDate = new Date(
+                  utcDate.toLocaleString("en-US", { timeZone: "Asia/Kolkata" })
+                );
                 var div1 = document.createElement("div");
                 div1.className =
                   "timeline-time text-dark flex-shrink-0 text-end";
                 var date = document.createElement("div");
-                date.textContent = istDate.toLocaleDateString("en-US", {
-                  day: '2-digit',
-                  month: '2-digit',
-                  year: 'numeric'
-                }).replace("/", "-").replace("/", "-");
+                date.textContent = istDate
+                  .toLocaleDateString("en-US", {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric",
+                  })
+                  .replace("/", "-")
+                  .replace("/", "-");
                 div1.appendChild(date);
                 var time = document.createElement("div");
-                time.textContent = istDate.toLocaleTimeString("en-US", { hour12: false }) + " IST";
+                time.textContent =
+                  istDate.toLocaleTimeString("en-US", { hour12: false }) +
+                  " IST";
                 div1.appendChild(time);
 
                 var div2 = document.createElement("div");
@@ -385,9 +398,9 @@ function Fiery() {
                 div3.appendChild(smoke_details);
                 var flame_details = document.createElement("span");
                 flame_details.className = "text-primary d-block fw-normal";
-                flame_details.textContent = `Flame: ${parseInt(
-                  fetched_data[i].field7
-                )}`;
+                flame_details.textContent = `Flame: ${parseFloat(
+                  100 - fetched_data[i].field7 / 50
+                ).toFixed(1)} %`;
                 div3.appendChild(flame_details);
 
                 li.appendChild(div1);

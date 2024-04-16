@@ -11,7 +11,7 @@
 #define WiFi_PASS "PASSWORD"
 
 #define FLAME_SEN_DIGITAL_PIN 5
-#define FLAME_SEN_ANALOG_PIN 4
+#define FLAME_SEN_ANALOG_PIN 34
 
 #define SMOKE_SEN_DIGITAL_PIN 2
 #define SMOKE_SEN_ANALOG_PIN 35
@@ -298,7 +298,7 @@ void loop()
         ThingSpeak.setField(7, flameAnalogReading);
         ThingSpeak.setField(8, flameDigitalReading);
 
-        if (temperatureReadingCelsius > temperatureThreshold || heatIndexCelsius > heatIndexThreshold || (previousHumidityReading != -1 && abs(previousHumidityReading - humidityReading) > humidityChangeThreshold) || smokeAnalogReading > smokeAnalogThreshold || flameAnalogReading > flameThreshold)
+        if (temperatureReadingCelsius > temperatureThreshold || heatIndexCelsius > heatIndexThreshold || (previousHumidityReading != -1 && abs(previousHumidityReading - humidityReading) > humidityChangeThreshold) || smokeAnalogReading > smokeAnalogThreshold || flameAnalogReading < flameThreshold)
         {
             fire = true;
             digitalWrite(BUZZER_PIN, LOW);
