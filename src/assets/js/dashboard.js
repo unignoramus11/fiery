@@ -251,7 +251,7 @@ function Fiery() {
               series: [
                 {
                   name: "Flames",
-                  color: "#29E7CD",
+                  color: "#ff0000",
                   data: fetched_data
                     .slice(-100)
                     .map((item) => parseInt(item.field7)),
