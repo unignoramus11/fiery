@@ -185,7 +185,7 @@ float temperatureThreshold = 50;
 float heatIndexThreshold = 55;
 int humidityChangeThreshold = 20;
 int smokeAnalogThreshold = 1000;
-float flameThreshold = 0.5;
+float flameThreshold = 1500.0;
 
 void loop()
 {
