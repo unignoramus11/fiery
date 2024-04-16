@@ -1,373 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fiery</title>
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href="../assets/images/logos/favicon.png"
-    />
-    <link rel="stylesheet" href="../assets/css/styles.min.css" />
-    <link rel="stylesheet" href="../assets/css/our.css" />
-  </head>
 
-  <body>
-    <div
-      class="page-wrapper mini-sidebar"
-      id="main-wrapper"
-      data-layout="vertical"
-      data-navbarbg="skin6"
-      data-sidebartype="full mini-sidebar"
-      data-sidebar-position="fixed"
-      data-header-position="fixed"
-    >
-      <!--  Main Content -->
-      <div class="body-wrapper" style="margin-left: 0">
-        <!--  Header -->
-        <header class="app-header" , style="width: 100%">
-          <div class="navie" , style="width: 100%; padding: 0">
-            <nav class="navbar navbar-expand-lg navbar-light">
-              <div
-                class="navbar-collapse justify-content-end px-0"
-                id="navbarNav"
-              >
-                <ul
-                  class="navbar-nav flex-row ms-auto align-items-center justify-content-end"
-                >
-                  <img
-                    src="../assets/images/logos/favicon.png"
-                    alt=""
-                    width="35"
-                    height="35"
-                    class="rounded-circle"
-                  />
-                  <p class="logoName">Fiery</p>
-                </ul>
-              </div>
-            </nav>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fiery</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+  <link rel="stylesheet" href="../assets/css/our.css" />
+</head>
 
-            <nav class="navbar navbar-expand-lg navbar-light">
-              <div
-                class="navbar-collapse justify-content-end px-0"
-                id="navbarNav"
-              >
-                <ul
-                  class="navbar-nav flex-row ms-auto align-items-center justify-content-end"
-                >
-                  <a
-                    href="modify.html"
-                    class="btn btn-primary"
-                    style="
+<body>
+  <div class="page-wrapper mini-sidebar" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6"
+    data-sidebartype="full mini-sidebar" data-sidebar-position="fixed" data-header-position="fixed">
+    <!--  Main Content -->
+    <div class="body-wrapper" style="margin-left: 0">
+      <!--  Header -->
+      <header class="app-header" , style="width: 100%">
+        <div class="navie" , style="width: 100%; padding: 0">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+              <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                <img src="../assets/images/logos/favicon.png" alt="" width="35" height="35" class="rounded-circle" />
+                <p class="logoName">Fiery</p>
+              </ul>
+            </div>
+          </nav>
+
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+              <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                <a href="modify.html" class="btn btn-primary" style="
                       background-color: rgb(192, 40, 49);
                       border-color: rgb(192, 40, 49);
-                    "
-                  >
-                    Modify Thresholds
-                  </a>
-                </ul>
-              </div>
-            </nav>
-          </div>
-        </header>
+                    ">
+                  Modify Thresholds
+                </a>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </header>
 
-        <div class="container-fluid">
-          <!--  Row 1 : Current Status -->
-          <div class="row">
-            <div class="col-lg-12 d-flex align-items-stretch">
-              <div class="card w-100">
-                <div
-                  class="card-body p-4"
-                  style="
+      <div class="container-fluid">
+        <!--  Row 1 : Current Status -->
+        <div class="row">
+          <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body p-4" style="
                     display: flex;
                     justify-content: center;
                     align-items: right;
-                  "
-                  id="fireAlert"
-                >
-                  <img
-                    src="../assets/images/loading.gif"
-                    alt="loading"
-                    id="alertLogo"
-                    width="69px"
-                    height="69px"
-                  />
-                  <p id="alertText">Loading...</p>
-                </div>
+                  " id="fireAlert">
+                <img src="../assets/images/loading.gif" alt="loading" id="alertLogo" width="69px" height="69px" />
+                <p id="alertText">Loading...</p>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Row 2 : Sensor Readings -->
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="row">
-                <!-- Temperature -->
-                <div class="col-lg-12">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="row alig n-items-start">
-                        <div class="col-8">
-                          <h5 class="card-title mb-9 fw-semibold">
-                            Temperature
-                          </h5>
-                          <h4 class="fw-semibold mb-3" id="curTemperature">
-                            00 C
-                          </h4>
-                        </div>
-                        <div class="col-4">
-                          <div class="d-flex justify-content-end">
-                            <div
-                              class="text-white rounded-circle p-6 d-flex align-items-center justify-content-center"
-                              style="
+        <!-- Row 2 : Sensor Readings -->
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="row">
+              <!-- Temperature -->
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row alig n-items-start">
+                      <div class="col-8">
+                        <h5 class="card-title mb-9 fw-semibold">
+                          Temperature
+                        </h5>
+                        <h4 class="fw-semibold mb-3" id="curTemperature">
+                          00 C
+                        </h4>
+                      </div>
+                      <div class="col-4">
+                        <div class="d-flex justify-content-end">
+                          <div class="text-white rounded-circle p-6 d-flex align-items-center justify-content-center"
+                            style="
                                 width: 47px;
                                 height: 47px;
                                 border-radius: 50%;
                                 background-color: #ffa500;
-                              "
-                            >
-                              <img
-                                width="32"
-                                height="32"
-                                src="https://img.icons8.com/pastel-glyph/64/FFFFFF/thermometer--v2.png"
-                                alt="thermometer--v2"
-                              />
-                            </div>
+                              ">
+                            <img width="32" height="32"
+                              src="https://img.icons8.com/pastel-glyph/64/FFFFFF/thermometer--v2.png"
+                              alt="thermometer--v2" />
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div id="temperature"></div>
                   </div>
+                  <div id="temperature"></div>
                 </div>
+              </div>
 
-                <!-- Heat Index -->
-                <div class="col-lg-12">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="row alig n-items-start">
-                        <div class="col-8">
-                          <h5 class="card-title mb-9 fw-semibold">
-                            Heat Index
-                          </h5>
-                          <h4 class="fw-semibold mb-3" id="curHeatIndex">
-                            00 C
-                          </h4>
-                        </div>
-                        <div class="col-4">
-                          <div class="d-flex justify-content-end">
-                            <div
-                              class="text-white rounded-circle p-6 d-flex align-items-center justify-content-center"
-                              style="
+              <!-- Heat Index -->
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row alig n-items-start">
+                      <div class="col-8">
+                        <h5 class="card-title mb-9 fw-semibold">
+                          Heat Index
+                        </h5>
+                        <h4 class="fw-semibold mb-3" id="curHeatIndex">
+                          00 C
+                        </h4>
+                      </div>
+                      <div class="col-4">
+                        <div class="d-flex justify-content-end">
+                          <div class="text-white rounded-circle p-6 d-flex align-items-center justify-content-center"
+                            style="
                                 width: 47px;
                                 height: 47px;
                                 border-radius: 50%;
                                 background-color: #ff5d87;
-                              "
-                            >
-                              <img
-                                width="32"
-                                height="32"
-                                src="https://img.icons8.com/pastel-glyph/64/FFFFFF/thermometer--v5.png"
-                                alt="thermometer--v5"
-                              />
-                            </div>
+                              ">
+                            <img width="32" height="32"
+                              src="https://img.icons8.com/pastel-glyph/64/FFFFFF/thermometer--v5.png"
+                              alt="thermometer--v5" />
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div id="heatIndex"></div>
                   </div>
+                  <div id="heatIndex"></div>
                 </div>
-              </div>
-            </div>
-
-            <div class="col-lg-6">
-              <div class="row">
-                <!-- Humidity -->
-                <div class="col-lg-12">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="row alig n-items-start">
-                        <div class="col-8">
-                          <h5 class="card-title mb-9 fw-semibold">Humidity</h5>
-                          <h4 class="fw-semibold mb-3" id="curHumidity">
-                            00 %
-                          </h4>
-                        </div>
-                        <div class="col-4">
-                          <div class="d-flex justify-content-end">
-                            <div
-                              class="text-white rounded-circle p-6 d-flex align-items-center justify-content-center"
-                              style="
-                                width: 47px;
-                                height: 47px;
-                                border-radius: 50%;
-                                background-color: #6699ee;
-                              "
-                            >
-                              <img
-                                width="32"
-                                height="32"
-                                src="https://img.icons8.com/sf-black/64/FFFFFF/wet.png"
-                                alt="wet"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div id="humidity"></div>
-                  </div>
-                </div>
-
-                <!-- Smoke -->
-                <div class="col-lg-12">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="row alig n-items-start">
-                        <div class="col-8">
-                          <h5 class="card-title mb-9 fw-semibold">Smoke</h5>
-                          <h4 class="fw-semibold mb-3" id="curSmoke">
-                            000 ppm
-                          </h4>
-                        </div>
-                        <div class="col-4">
-                          <div class="d-flex justify-content-end">
-                            <div
-                              class="text-white rounded-circle p-6 d-flex align-items-center justify-content-center"
-                              style="
-                                width: 47px;
-                                height: 47px;
-                                border-radius: 50%;
-                                background-color: #29e7cd;
-                              "
-                            >
-                              <img
-                                width="32"
-                                height="32"
-                                src="https://img.icons8.com/external-others-pike-picture/50/FFFFFF/external-Smoke-smoke-others-pike-picture-2.png"
-                                alt="external-Smoke-smoke-others-pike-picture-2"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div id="smoke"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-3"></div>
-            <div class="col-lg-6">
-              <div class="row">
-                <!-- Flames -->
-                <div class="col-lg-12">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="row alig n-items-start">
-                        <div class="col-8">
-                          <h5 class="card-title mb-9 fw-semibold"> Flames </h5>
-                          <h4 class="fw-semibold mb-3" id="curFlame">
-                            0 V
-                          </h4>
-                        </div>
-                        <div class="col-4">
-                          <div class="d-flex justify-content-end">
-                            <div
-                              class="text-white rounded-circle p-6 d-flex align-items-center justify-content-center"
-                              style="
-                                width: 47px;
-                                height: 47px;
-                                border-radius: 50%;
-                                background-color: red;
-                              "
-                            >
-                              <img
-                                width="32"
-                                height="32"
-                                src="https://img.icons8.com/sf-black/64/FFFFFF/wet.png"
-                                alt="wet"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div id="flames"></div>
-                  </div>
-                </div>             
               </div>
             </div>
           </div>
 
-          <!-- Row 3 : Past Alerts -->
-          <div class="row">
-            <div class="col-lg-12 d-flex align-items-stretch">
-              <div class="card w-100">
-                <div class="card-body p-4">
-                  <div class="mb-4">
-                    <h5 class="card-title fw-semibold">Past Alerts</h5>
+          <div class="col-lg-6">
+            <div class="row">
+              <!-- Humidity -->
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row alig n-items-start">
+                      <div class="col-8">
+                        <h5 class="card-title mb-9 fw-semibold">Humidity</h5>
+                        <h4 class="fw-semibold mb-3" id="curHumidity">
+                          00 %
+                        </h4>
+                      </div>
+                      <div class="col-4">
+                        <div class="d-flex justify-content-end">
+                          <div class="text-white rounded-circle p-6 d-flex align-items-center justify-content-center"
+                            style="
+                                width: 47px;
+                                height: 47px;
+                                border-radius: 50%;
+                                background-color: #6699ee;
+                              ">
+                            <img width="32" height="32" src="https://img.icons8.com/sf-black/64/FFFFFF/wet.png"
+                              alt="wet" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <ul
-                    class="timeline-widget mb-0 position-relative mb-n5"
-                    id="alertList"
-                  >
-                    <li
-                      class="timeline-item d-flex position-relative overflow-hidden"
-                      id="lastAlert"
-                    >
-                      <div
-                        class="timeline-time text-dark flex-shrink-0 text-end"
-                        id="startup"
-                      >
-                        <div>2024-04-09</div>
-                        <div style="padding-bottom: 5vh">22:08:05 UTC</div>
-                      </div>
-                      <div
-                        class="timeline-badge-wrap d-flex flex-column align-items-center"
-                      >
-                        <span
-                          class="timeline-badge border-2 border border-success flex-shrink-0 my-8"
-                        ></span>
-                      </div>
-                      <div class="timeline-desc fs-3 text-dark mt-n1">
-                        Node started
-                      </div>
-                    </li>
-                  </ul>
+                  <div id="humidity"></div>
                 </div>
+              </div>
+
+              <!-- Smoke -->
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row alig n-items-start">
+                      <div class="col-8">
+                        <h5 class="card-title mb-9 fw-semibold">Smoke</h5>
+                        <h4 class="fw-semibold mb-3" id="curSmoke">
+                          000 ppm
+                        </h4>
+                      </div>
+                      <div class="col-4">
+                        <div class="d-flex justify-content-end">
+                          <div class="text-white rounded-circle p-6 d-flex align-items-center justify-content-center"
+                            style="
+                                width: 47px;
+                                height: 47px;
+                                border-radius: 50%;
+                                background-color: #29e7cd;
+                              ">
+                            <img width="32" height="32"
+                              src="https://img.icons8.com/external-others-pike-picture/50/FFFFFF/external-Smoke-smoke-others-pike-picture-2.png"
+                              alt="external-Smoke-smoke-others-pike-picture-2" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="smoke"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3"></div>
+          <div class="col-lg-6">
+            <div class="row">
+              <!-- Flames -->
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row alig n-items-start">
+                      <div class="col-8">
+                        <h5 class="card-title mb-9 fw-semibold"> Flames </h5>
+                        <h4 class="fw-semibold mb-3" id="curFlame">
+                          0 V
+                        </h4>
+                      </div>
+                      <div class="col-4">
+                        <div class="d-flex justify-content-end">
+                          <div class="text-white rounded-circle p-6 d-flex align-items-center justify-content-center"
+                            style="
+                                width: 47px;
+                                height: 47px;
+                                border-radius: 50%;
+                                background-color: red;
+                              ">
+                            <img width="30" height="30"
+                              src="https://img.icons8.com/ios-glyphs/90/FFFFFF/fire-element--v1.png"
+                              alt="fire-element--v1" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="flames"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3 : Past Alerts -->
+        <div class="row">
+          <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body p-4">
+                <div class="mb-4">
+                  <h5 class="card-title fw-semibold">Past Alerts</h5>
+                </div>
+                <ul class="timeline-widget mb-0 position-relative mb-n5" id="alertList">
+                  <li class="timeline-item d-flex position-relative overflow-hidden" id="lastAlert">
+                    <div class="timeline-time text-dark flex-shrink-0 text-end" id="startup">
+                      <div>2024-04-09</div>
+                      <div style="padding-bottom: 5vh">22:08:05 UTC</div>
+                    </div>
+                    <div class="timeline-badge-wrap d-flex flex-column align-items-center">
+                      <span class="timeline-badge border-2 border border-success flex-shrink-0 my-8"></span>
+                    </div>
+                    <div class="timeline-desc fs-3 text-dark mt-n1">
+                      Node started
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- a centered footer text citing sources for images -->
-    <footer class="footer">
-      <div class="container">
-        <div class="text-center">
-          <p>
-            Icons by
-            <a href="https://www.flaticon.com/" title="Flaticon" target="_blank"
-              >Flaticon</a
-            >
-            and
-            <a href="https://icons8.com/" title="Icons8" target="_blank"
-              >Icons8</a
-            >
-          </p>
-        </div>
+  </div>
+  <!-- a centered footer text citing sources for images -->
+  <footer class="footer">
+    <div class="container">
+      <div class="text-center">
+        <p>
+          Icons by
+          <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">Flaticon</a>
+          and
+          <a href="https://icons8.com/" title="Icons8" target="_blank">Icons8</a>
+        </p>
       </div>
-    </footer>
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/app.min.js"></script>
-    <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
-    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
-    <script src="../assets/js/dashboard.js"></script>
-  </body>
+    </div>
+  </footer>
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+  <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="../assets/js/dashboard.js"></script>
+</body>
+
 </html>
