@@ -273,17 +273,21 @@ function Fiery() {
                 var li = document.createElement("li");
                 li.className =
                   "timeline-item d-flex position-relative overflow-hidden";
-
+                
+                const utcDate = new Date(fetched_data[i].created_at);
+                const istDate = new Date(utcDate.toLocaleString("en-US", {timeZone: "Asia/Kolkata"}));
                 var div1 = document.createElement("div");
                 div1.className =
                   "timeline-time text-dark flex-shrink-0 text-end";
                 var date = document.createElement("div");
-                date.textContent = fetched_data[i].created_at.split("T")[0];
+                date.textContent = istDate.toLocaleDateString("en-US", {
+                  day: '2-digit',
+                  month: '2-digit',
+                  year: 'numeric'
+              }).replace("/", "-").replace("/", "-");
                 div1.appendChild(date);
                 var time = document.createElement("div");
-                time.textContent =
-                  fetched_data[i].created_at.split("T")[1].replace("Z", "") +
-                  " UTC";
+                time.textContent = istDate.toLocaleTimeString("en-US", {hour12: false}) + " IST";
                 div1.appendChild(time);
 
                 var div2 = document.createElement("div");

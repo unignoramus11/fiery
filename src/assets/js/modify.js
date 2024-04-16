@@ -10,13 +10,15 @@ submitBtn.addEventListener("click", function (event) {
   var accepted = document.getElementById("accepted").checked;
 
   if (isNaN(temperature) || temperature === 0)
-    alert("Invalid temperature threshold");
+    alert("Invalid temperature threshold (must be a positive number)");
   else if (isNaN(humidity) || humidity === 0)
-    alert("Invalid humidity threshold");
+    alert("Invalid humidity threshold (must be a positive number)");
   else if (isNaN(heatIndex) || heatIndex === 0)
     alert("Invalid heat index threshold");
-  else if (isNaN(smoke) || smoke === 0) alert("Invalid smoke threshold");
-  else if (!accepted) alert("Please accept the terms and conditions");
+  else if (isNaN(smoke) || smoke === 0)
+    alert("Invalid smoke threshold (must be a positive number)");
+  else if (!accepted)
+    alert("Please accept the terms and conditions");
   else {
     //   start an async GET request to push this data to thingspeak server
     fetch(
