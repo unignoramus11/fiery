@@ -23,7 +23,7 @@ submitBtn.addEventListener("click", function (event) {
   else if (!accepted) alert("Please accept the terms and conditions");
   else {
     //   start an async GET request to push this data to thingspeak server
-    flame = (100 - flame) * 50;
+    flame = 4095 - flame * 4095 / 100;
     fetch(
       `https://api.thingspeak.com/update?api_key=DMUU4N34U556W1W1&field1=${temperature}&field2=${heatIndex}&field3=${humidity}&field4=${smoke}&field5=${password}&field6=${flame}`
     )

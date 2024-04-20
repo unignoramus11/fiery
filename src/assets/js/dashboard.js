@@ -255,7 +255,7 @@ function Fiery() {
                   data: fetched_data
                     .slice(-100)
                     .map((item) =>
-                      (100 - parseInt(item.field7) / 50).toFixed(1)
+                      (100 * (4095 - parseInt(item.field7)) / 4095).toFixed(1)
                     ),
                 },
               ],
@@ -285,9 +285,10 @@ function Fiery() {
             };
             new ApexCharts(document.querySelector("#flames"), flame).render();
             document.querySelector("#curFlame").textContent =
-              (100 -
-              parseInt(fetched_data[fetched_data.length - 1].field7) / 50).toFixed(1) +
-              " %";
+              (
+                100 * (4095 -
+                parseInt(fetched_data[fetched_data.length - 1].field7)) / 4095
+              ).toFixed(1) + " %";
 
             // =====================================
             // Alerts
@@ -399,7 +400,7 @@ function Fiery() {
                 var flame_details = document.createElement("span");
                 flame_details.className = "text-primary d-block fw-normal";
                 flame_details.textContent = `Flame: ${parseFloat(
-                  100 - fetched_data[i].field7 / 50
+                  100 * (4095 - fetched_data[i].field7) / 4095
                 ).toFixed(1)} %`;
                 div3.appendChild(flame_details);
 
